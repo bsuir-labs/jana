@@ -67,8 +67,7 @@ void task1(int*** matrix, int n, int m)
     }
 
     for (int i = 0; i < n; ++i)
-        (*matrix)
-[i][line_number] /= 2;
+        (*matrix)[i][line_number] /= 2;
 }
 
 void task2()
