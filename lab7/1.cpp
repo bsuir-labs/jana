@@ -37,6 +37,8 @@ int main()
                     delete[] matrix[i];
                 delete[] matrix;
                 return 0;
+            default:
+                printf("No such command, try once again.\n");
         }
     }
     return 0;
