@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void task1(int***, int, int); // прототипы функций. Зачем они нужны в теории норм написано вроде
+void task1(int**, int, int); // прототипы функций. Зачем они нужны в теории норм написано вроде
 void task2(); // тут не буду расписывать. Определения функций будут после main
 void read_matrix(int***, int*, int*);
 void print_matrix(int**, int, int);
@@ -24,7 +24,7 @@ int main()
                 read_matrix(&matrix, &n, &m); // читаем матрицу
                 break; // выходим из switch
             case 2:
-                task1(&matrix, n, m); // выполняем задание 1
+                task1(matrix, n, m); // выполняем задание 1
                 break;
             case 3:
                 print_matrix(matrix, n, m); // выводим матрицу
@@ -37,12 +37,14 @@ int main()
                     delete[] matrix[i]; // (но просто, чтоб привыкать подчищать память за собой)
                 delete[] matrix;
                 return 0; // выходим из программы
+            default: // выполится, если введут что-то, не рассмотренное выше
+                printf("No such command, try once again.\n");
         }
     }
     return 0;
 }
 
-void task1(int*** matrix, int n, int m) // первое задание
+void task1(int** matrix, int n, int m) // первое задание
 {
     /*
         По сути, такое же задание у тебя было в одной из предыдущих лаб
@@ -55,7 +57,7 @@ void task1(int*** matrix, int n, int m) // первое задание
     {
         int all_zeros = 1;
         for (int j = 0; j < n && all_zeros; ++j)
-            if ((*matrix)[i][j] != 0) all_zeros = 0;
+            if (matrix[i][j] != 0) all_zeros = 0;
         if (all_zeros) line_number = i;
     }
 
@@ -72,7 +74,7 @@ void task1(int*** matrix, int n, int m) // первое задание
     }
 
     for (int i = 0; i < n; ++i)
-        (*matrix)[i][line_number] /= 2;
+        matrix[i][line_number] /= 2;
 }
 
 void task2() // второе задание. Здесь нам ничего не надо из основной программы, поэтому ф-ция не принимает аргументов
