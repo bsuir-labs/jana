@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void task1(int***, int, int);
+void task1(int**, int, int);
 void task2();
 void read_matrix(int***, int*, int*);
 void print_matrix(int**, int, int);
@@ -24,7 +24,7 @@ int main()
                 read_matrix(&matrix, &n, &m);
                 break;
             case 2:
-                task1(&matrix, n, m);
+                task1(matrix, n, m);
                 break;
             case 3:
                 print_matrix(matrix, n, m);
@@ -44,7 +44,7 @@ int main()
     return 0;
 }
 
-void task1(int*** matrix, int n, int m)
+void task1(int** matrix, int n, int m)
 {
     int line_number = -1;
 
@@ -52,7 +52,7 @@ void task1(int*** matrix, int n, int m)
     {
         int all_zeros = 1;
         for (int j = 0; j < n && all_zeros; ++j)
-            if ((*matrix)[i][j] != 0) all_zeros = 0;
+            if (matrix[i][j] != 0) all_zeros = 0;
         if (all_zeros) line_number = i;
     }
 
@@ -69,7 +69,7 @@ void task1(int*** matrix, int n, int m)
     }
 
     for (int i = 0; i < n; ++i)
-        (*matrix)[i][line_number] /= 2;
+        matrix[i][line_number] /= 2;
 }
 
 void task2()
