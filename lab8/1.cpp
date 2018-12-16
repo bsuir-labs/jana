@@ -88,7 +88,6 @@ int menu()
 struct Customer read()
 {
     struct Customer nc;
-    char c;
     printf("Name:\n");
     getc(stdin);
     gets_s(nc.first_name, 49);
@@ -107,11 +106,7 @@ struct Customer read()
 
 void add(struct Customer** c, int* sz)
 {
-    if (*c == NULL) {
-        *c = (struct Customer*) malloc(sizeof(struct Customer));
-    } else {
-        *c = (struct Customer*) realloc(*c, sizeof(struct Customer) * (*sz + 1));
-    }
+    *c = (struct Customer*) realloc(*c, sizeof(struct Customer) * (*sz + 1));
     (*sz)++;
 
     (*c)[*sz - 1] = read();
